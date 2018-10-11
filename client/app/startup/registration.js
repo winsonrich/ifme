@@ -13,7 +13,6 @@ import { ChartControl } from '../components/Chart/ChartControl';
 import { Form } from '../components/Form';
 import { Header } from '../components/Header';
 import { HeaderProfile } from '../components/Header/HeaderProfile';
-import { InputLocation } from '../components/Input/InputLocation';
 import { Logo } from '../components/Logo';
 import { Modal } from '../components/Modal';
 import { Notifications } from '../widgets/Notifications';
@@ -28,6 +27,7 @@ import { StoryDate } from '../components/Story/StoryDate';
 import { Tag } from '../components/Tag';
 import { Tooltip } from '../components/Tooltip';
 import { ToggleLocale } from '../widgets/ToggleLocale';
+import { Input } from '../components/Input';
 
 setup();
 
@@ -40,7 +40,7 @@ ReactOnRails.register({
   Form,
   Header,
   HeaderProfile,
-  InputLocation,
+  Input,
   Logo,
   Modal,
   Notifications,

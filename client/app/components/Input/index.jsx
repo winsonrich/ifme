@@ -8,6 +8,8 @@ import { InputCheckboxGroup } from './InputCheckboxGroup';
 import { InputSelect } from './InputSelect';
 import { InputTag } from './InputTag';
 import { InputSwitch } from './InputSwitch';
+import { InputLocation } from './InputLocation';
+
 import {
   InputDefault,
   REQUIRES_DEFAULT,
@@ -24,6 +26,7 @@ export const TYPES = REQUIRES_DEFAULT.concat([
   'checkboxGroup',
   'tag',
   'switch',
+  'location',
 ]);
 
 const REQUIRES_LABEL = DEFAULT_WITH_LABEL.concat([
@@ -69,7 +72,8 @@ export type Props = {
     | 'checkboxGroup'
     | 'tag'
     | 'hidden'
-    | 'switch',
+    | 'switch'
+    | 'location',
   name?: string,
   label?: string,
   placeholder?: string,
@@ -97,6 +101,7 @@ export type Props = {
   myRef?: any,
   accordionOpen?: boolean,
   formNoValidate?: boolean,
+  googleAPIKey?: string,
 };
 
 export type State = {
@@ -325,6 +330,22 @@ export class Input extends React.Component<Props, State> {
     return null;
   };
 
+  displayLocation = () => {
+    const {
+      type, placeholder, googleAPIKey, id,
+    } = this.props;
+    if (type === 'location' && placeholder && googleAPIKey) {
+      return (
+        <InputLocation
+          placeholder={placeholder}
+          apiKey={googleAPIKey}
+          id={id}
+        />
+      );
+    }
+    return null;
+  };
+
   render() {
     const {
       type,
@@ -354,6 +375,7 @@ export class Input extends React.Component<Props, State> {
         {this.displayTag()}
         {this.displaySwitch()}
         {this.displaySubmit()}
+        {this.displayLocation()}
       </div>
     );
     return accordion && label ? (
